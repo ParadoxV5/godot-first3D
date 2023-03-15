@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://beo3duhd7iwot"]
+
+[ext_resource type="PackedScene" uid="uid://hd5n48ibtfna" path="res://player/player.glb" id="1_nignv"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p17rj"]
+height = 1.0
+radius = 1.0
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character" parent="Pivot" instance=ExtResource("1_nignv")]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 0, -0.05)
+shape = SubResource("CylinderShape3D_p17rj")

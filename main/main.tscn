@@ -17,6 +17,7 @@ spawn_distance = 22.5
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_mask = 0
 
 [node name="Collision" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_ihimu")

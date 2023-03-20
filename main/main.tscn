@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1funwtopiaoi"]
+[gd_scene load_steps=6 format=3 uid="uid://c1funwtopiaoi"]
 
 [ext_resource type="PackedScene" uid="uid://beo3duhd7iwot" path="res://player/player.tscn" id="1_g3xgd"]
+[ext_resource type="Script" path="res://main/main.gd" id="1_mu4jc"]
+[ext_resource type="PackedScene" uid="uid://dt2t7ofw185xl" path="res://mob/mob.tscn" id="3_tqv35"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ihimu"]
 size = Vector3(50, 2, 50)
@@ -9,6 +11,9 @@ size = Vector3(50, 2, 50)
 size = Vector3(50, 2, 50)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_mu4jc")
+mob_scene = ExtResource("3_tqv35")
+spawn_distance = 22.5
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -32,3 +37,9 @@ projection = 1
 size = 20.0
 
 [node name="Player" parent="." instance=ExtResource("1_g3xgd")]
+
+[node name="MobSpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

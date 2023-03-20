@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var min_speed: float
 @export var max_speed: float
-@export_range(0, 90) var rotate_range: float = 90
+@export_range(0, 90) var rotate_range: float = 45
 
 func _physics_process(_delta) -> void: move_and_slide()
 

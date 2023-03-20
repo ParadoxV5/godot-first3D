@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt2t7ofw185xl"]
+[gd_scene load_steps=4 format=3 uid="uid://dt2t7ofw185xl"]
 
+[ext_resource type="Script" path="res://mob/mob.gd" id="1_cvlgk"]
 [ext_resource type="PackedScene" uid="uid://lhrauclo0ifx" path="res://mob/mob.glb" id="1_icltw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3bdnp"]
@@ -8,6 +9,9 @@ radius = 1.0
 
 [node name="Mob" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+script = ExtResource("1_cvlgk")
+min_speed = 10.0
+max_speed = 18.0
 
 [node name="Pivot" type="Node3D" parent="."]
 
@@ -20,3 +24,5 @@ shape = SubResource("CylinderShape3D_3bdnp")
 
 [node name="VisibleNotifier" type="VisibleOnScreenNotifier3D" parent="."]
 aabb = AABB(-1.25, -0.375, -1.5, 2.5, 1.5, 3.5)
+
+[connection signal="screen_exited" from="VisibleNotifier" to="." method="_on_visible_notifier_screen_exited"]

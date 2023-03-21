@@ -21,3 +21,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0, 0.03)
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_p17rj")
+
+[connection signal="hit" from="." to="." method="_on_hit"]

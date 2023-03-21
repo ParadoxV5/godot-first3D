@@ -9,6 +9,8 @@ extends CharacterBody3D
 ## Acceleration due to Gravity (m/s²)
 @export var fall_acc: float = 75
 
+var impulse_rotate: float = TAU / 16 / jump_impulse
+
 signal hit
 
 func _physics_process(delta: float) -> void:
@@ -20,8 +22,11 @@ func _physics_process(delta: float) -> void:
   var velocity2: Vector3 = Vector3(direction.x, 0, direction.y)
     # Currently only a 3D horizontal-only direction
   
-  if direction != Vector2.ZERO:
+  if direction == Vector2.ZERO:
+    $AnimationPlayer.speed_scale = 1
+  else:
     look_at(position + velocity2)
+    $AnimationPlayer.speed_scale = 2
   
   # Find the Y component of `velocity2` and apply it
   if is_on_floor():
@@ -43,6 +48,7 @@ func _physics_process(delta: float) -> void:
   else:
     velocity2.y = velocity.y - fall_acc * delta # Fall by gravity
   velocity = velocity2
+  $Character/Model.rotation.x = impulse_rotate * velocity2.y
   
   move_and_slide()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1funwtopiaoi"]
+[gd_scene load_steps=13 format=3 uid="uid://c1funwtopiaoi"]
 
 [ext_resource type="PackedScene" uid="uid://beo3duhd7iwot" path="res://player/player.tscn" id="1_g3xgd"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_mu4jc"]
@@ -10,6 +10,18 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_io0ih"]
 size = Vector2(50, 50)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cxacb"]
+plane = Plane(0, 0, 1, -15)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_lkmt0"]
+plane = Plane(0, 0, -1, -15)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bxph7"]
+plane = Plane(1, 0, 0, -15)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_lep8p"]
+plane = Plane(-1, 0, 0, -15)
 
 [sub_resource type="Theme" id="Theme_8osnu"]
 default_font = ExtResource("4_fdgk0")
@@ -27,6 +39,18 @@ shape = SubResource("WorldBoundaryShape3D_dqp0c")
 
 [node name="Mesh" type="MeshInstance3D" parent="Playfield/Ground"]
 mesh = SubResource("PlaneMesh_io0ih")
+
+[node name="WallN" type="CollisionShape3D" parent="Playfield"]
+shape = SubResource("WorldBoundaryShape3D_cxacb")
+
+[node name="WallS" type="CollisionShape3D" parent="Playfield"]
+shape = SubResource("WorldBoundaryShape3D_lkmt0")
+
+[node name="WallW" type="CollisionShape3D" parent="Playfield"]
+shape = SubResource("WorldBoundaryShape3D_bxph7")
+
+[node name="WallE" type="CollisionShape3D" parent="Playfield"]
+shape = SubResource("WorldBoundaryShape3D_lep8p")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.382683, 0.92388, 0, -0.92388, 0.382683, 0, 20, 0)

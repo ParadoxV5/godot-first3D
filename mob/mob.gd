@@ -9,7 +9,7 @@ signal squashed
 func _physics_process(_delta) -> void: move_and_slide()
 
 func setup_position(start_position: Vector3, player_position: Vector3):
-  player_position.y = position.y
+  player_position.y = 0
   look_at_from_position(position + start_position, player_position, Vector3.UP)
   rotate_y(deg_to_rad(randf_range(-rotate_range, rotate_range)))
   velocity = (

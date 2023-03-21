@@ -26,8 +26,14 @@ shape = SubResource("BoxShape3D_ihimu")
 mesh = SubResource("BoxMesh_dbmo4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 31.6484, 0)
+transform = Transform3D(1, 0, 0, 0, 0.382683, 0.92388, 0, -0.92388, 0.382683, 0, 20, 0)
 shadow_enabled = true
+shadow_opacity = 0.75
+shadow_blur = 2.5
+directional_shadow_mode = 0
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 50.0
+directional_shadow_pancake_size = 0.0
 
 [node name="CameraPivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
@@ -35,7 +41,10 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="Camera" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 projection = 1
+current = true
 size = 20.0
+near = 5.0
+far = 50.0
 
 [node name="Player" parent="." instance=ExtResource("1_g3xgd")]
 

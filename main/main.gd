@@ -5,6 +5,7 @@ extends Node
 
 func _on_mob_spawn_timer_timeout() -> void:
   var mob: CharacterBody3D = mob_scene.instantiate()
+  mob.squashed.connect($UI/Score._on_Mob_squashed)
   # Unlike the Tuturial, this time I’m using a circularly
   # rotated `Vector3` to randomize the `start_position`
   mob.setup_position(

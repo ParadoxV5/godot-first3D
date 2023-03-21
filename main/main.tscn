@@ -1,14 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1funwtopiaoi"]
+[gd_scene load_steps=9 format=3 uid="uid://c1funwtopiaoi"]
 
 [ext_resource type="PackedScene" uid="uid://beo3duhd7iwot" path="res://player/player.tscn" id="1_g3xgd"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_mu4jc"]
 [ext_resource type="PackedScene" uid="uid://dt2t7ofw185xl" path="res://mob/mob.tscn" id="3_tqv35"]
+[ext_resource type="FontFile" uid="uid://b82das4s4itv2" path="res://main/Montserrat-Medium.ttf" id="4_fdgk0"]
+[ext_resource type="Script" path="res://main/score.gd" id="5_q581c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ihimu"]
 size = Vector3(50, 2, 50)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dbmo4"]
 size = Vector3(50, 2, 50)
+
+[sub_resource type="Theme" id="Theme_8osnu"]
+default_font = ExtResource("4_fdgk0")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_mu4jc")
@@ -51,6 +56,28 @@ far = 50.0
 [node name="MobSpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8osnu")
+
+[node name="Score" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 32.0
+offset_bottom = 114.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+script = ExtResource("5_q581c")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobSpawnTimer" to="." method="_on_mob_spawn_timer_timeout"]

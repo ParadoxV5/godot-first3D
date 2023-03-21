@@ -3,9 +3,9 @@ extends CharacterBody3D
 ## Horizontal Speed (m/s)
 @export var speed: float
 ## Jump Impulse Speed (m/s)
-@export var jump_impulse: float = 20
+@export var jump_impulse: float = 25
 ## Squash Bounce Impulse Speed (m/s)
-@export var bounce_impulse: float = 15
+@export var bounce_impulse: float = 20
 ## Acceleration due to Gravity (m/s²)
 @export var fall_acc: float = 75
 

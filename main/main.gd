@@ -21,5 +21,5 @@ func _on_player_hit() -> void:
   $MobSpawnTimer.stop()
   $UI/GameoverOverlay.show()
 func _unhandled_input(event):
-  if $UI/GameoverOverlay.visible and event.is_action_pressed(&"ui_accept"):
+  if $UI/GameoverOverlay.visible and event.is_action_pressed(&"retry"):
     get_tree().reload_current_scene()

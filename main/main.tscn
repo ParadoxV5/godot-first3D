@@ -52,6 +52,7 @@ near = 5.0
 far = 50.0
 
 [node name="Player" parent="." instance=ExtResource("1_g3xgd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 0)
 
 [node name="MobSpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -96,7 +97,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
-text = "Press Enter to retry."
+text = "Press Keyboard Enter
+or Controller Start
+to play again."
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -15,9 +15,9 @@ script = ExtResource("1_cvlgk")
 min_speed = 10.0
 max_speed = 18.0
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="Character" type="Node3D" parent="."]
 
-[node name="Character" parent="Pivot" instance=ExtResource("1_icltw")]
+[node name="Model" parent="Character" instance=ExtResource("1_icltw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02, 0, -0.06)
 
 [node name="Collision" type="CollisionShape3D" parent="."]

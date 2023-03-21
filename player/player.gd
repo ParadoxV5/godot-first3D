@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
     # Currently only a 3D horizontal-only direction
   
   if direction != Vector2.ZERO:
-    $Pivot.look_at(position + velocity2)
+    look_at(position + velocity2)
   
   # Find the Y component of `velocity2` and apply it
   if is_on_floor():

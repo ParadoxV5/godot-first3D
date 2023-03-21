@@ -6,11 +6,10 @@
 [ext_resource type="FontFile" uid="uid://b82das4s4itv2" path="res://main/Montserrat-Medium.ttf" id="4_fdgk0"]
 [ext_resource type="Script" path="res://main/score.gd" id="5_q581c"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ihimu"]
-size = Vector3(50, 2, 50)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dqp0c"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_dbmo4"]
-size = Vector3(50, 2, 50)
+[sub_resource type="PlaneMesh" id="PlaneMesh_io0ih"]
+size = Vector2(50, 50)
 
 [sub_resource type="Theme" id="Theme_8osnu"]
 default_font = ExtResource("4_fdgk0")
@@ -20,15 +19,14 @@ script = ExtResource("1_mu4jc")
 mob_scene = ExtResource("3_tqv35")
 spawn_distance = 22.5
 
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+[node name="Playfield" type="StaticBody3D" parent="."]
 collision_mask = 0
 
-[node name="Collision" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("BoxShape3D_ihimu")
+[node name="Ground" type="CollisionShape3D" parent="Playfield"]
+shape = SubResource("WorldBoundaryShape3D_dqp0c")
 
-[node name="Mesh" type="MeshInstance3D" parent="Ground"]
-mesh = SubResource("BoxMesh_dbmo4")
+[node name="Mesh" type="MeshInstance3D" parent="Playfield/Ground"]
+mesh = SubResource("PlaneMesh_io0ih")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.382683, 0.92388, 0, -0.92388, 0.382683, 0, 20, 0)

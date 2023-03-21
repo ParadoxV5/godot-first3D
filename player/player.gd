@@ -28,7 +28,10 @@ func _physics_process(delta: float) -> void:
     for i in range(get_slide_collision_count()):
       var collision: KinematicCollision3D = get_slide_collision(i)
       var collider: CollisionObject3D = collision.get_collider()
-      if collider and collider.is_in_group(&"mob"):
+      if (
+        collider and not collider.is_queued_for_deletion() and
+        collider.is_in_group(&"mob")
+      ):
         if collision.get_normal().dot(Vector3.UP) > 0.5: # check colliding from above
           collider.squash()
           velocity2.y = bounce_impulse

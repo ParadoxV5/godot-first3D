@@ -14,5 +14,12 @@ func _on_mob_spawn_timer_timeout() -> void:
   )
   add_child(mob)
 
+# $UI/GameoverOverlay.visible => if game is over
+func _ready():
+  $UI/GameoverOverlay.hide()
 func _on_player_hit() -> void:
   $MobSpawnTimer.stop()
+  $UI/GameoverOverlay.show()
+func _unhandled_input(event):
+  if $UI/GameoverOverlay.visible and event.is_action_pressed(&"ui_accept"):
+    get_tree().reload_current_scene()
